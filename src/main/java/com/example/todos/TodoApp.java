@@ -1,5 +1,6 @@
 package com.example.todos;
 
+import com.example.todos.data.TodoRepository;
 import com.example.todos.model.Todo;
 import com.example.todos.model.TodoStatus;
 import org.slf4j.Logger;
@@ -7,31 +8,30 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import java.util.ArrayList;
-import java.util.List;
+import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
-public class TodoApp implements CommandLineRunner {
+public class TodoApp {
   private static Logger LOG = LoggerFactory.getLogger(TodoApp.class);
 
   public static void main(String[] args) {
-    LOG.info("Starting the application");
     SpringApplication.run(TodoApp.class, args);
     LOG.info("Application finished.");
   }
 
-  @Override
-  public void run(String... args) throws Exception {
-    List<Todo> todos = new ArrayList<>();
-    LOG.info("Executing command line runner");
+  @Bean
+  public CommandLineRunner runner(TodoRepository todoRepository) {
+    return args -> {
+      LOG.info("Executing command line runner");
+      todoRepository.save(new Todo("Walk the dog", TodoStatus.ACTIVE));
+      todoRepository.save(new Todo("Do the shopping", TodoStatus.ACTIVE));
+      todoRepository.save(new Todo("Fix the washing machine", TodoStatus.ACTIVE));
+      todoRepository.save(new Todo("Feed the fish", TodoStatus.ACTIVE));
+      todoRepository.save(new Todo("Go to bank", TodoStatus.ACTIVE));
 
-    todos.add(new Todo(1, "Walk the dog", TodoStatus.ACTIVE));
-    todos.add(new Todo(2, "Do the shopping", TodoStatus.ACTIVE));
-    todos.add(new Todo(3, "Fix the washing machine", TodoStatus.ACTIVE));
-    todos.add(new Todo(4, "Feed the fish", TodoStatus.ACTIVE));
-    todos.add(new Todo(5, "Go to bank", TodoStatus.ACTIVE));
-
-    todos.forEach(todo -> LOG.info(todo.toString()));
+      for (Todo todo : todoRepository.findAll()) {
+        LOG.info(todo.toString());
+      }
+    };
   }
 }
