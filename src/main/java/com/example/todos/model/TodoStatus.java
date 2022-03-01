@@ -13,7 +13,7 @@ public enum TodoStatus {
       case INACTIVE:
         return "Inactive";
       case COMPLETED:
-        return "Done";
+        return "Completed";
     }
     return "";
   }
