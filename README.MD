@@ -1,0 +1,1 @@
+[![Java CI with Maven](https://github.com/r-freeman/TodoApp/actions/workflows/maven.yml/badge.svg)](https://github.com/r-freeman/TodoApp/actions/workflows/maven.yml)
