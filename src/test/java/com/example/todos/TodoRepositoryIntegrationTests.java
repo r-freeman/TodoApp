@@ -35,4 +35,22 @@ public class TodoRepositoryIntegrationTests {
     Todo lastTodo = todos.get(todos.size() - 1);
     assertThat(lastTodo.getStatus()).isEqualTo("Active");
   }
+
+  @Test
+  public void whenCalledSave_thenAssertThatDefaultStatusOfLastTodoIsInactive() {
+    todoRepository.save(new Todo("Go to the bank", TodoStatus.INACTIVE));
+    List<Todo> todos = (List<Todo>) todoRepository.findAll();
+
+    Todo lastTodo = todos.get(todos.size() - 1);
+    assertThat(lastTodo.getStatus()).isEqualTo("Inactive");
+  }
+
+  @Test
+  public void whenCalledSave_thenAssertThatDefaultStatusOfLastTodoIsCompleted() {
+    todoRepository.save(new Todo("Do the shopping", TodoStatus.COMPLETED));
+    List<Todo> todos = (List<Todo>) todoRepository.findAll();
+
+    Todo lastTodo = todos.get(todos.size() - 1);
+    assertThat(lastTodo.getStatus()).isEqualTo("Completed");
+  }
 }
