@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class TodoApp {
-  private static Logger LOG = LoggerFactory.getLogger(TodoApp.class);
+  private static final Logger LOG = LoggerFactory.getLogger(TodoApp.class);
 
   public static void main(String[] args) {
     SpringApplication.run(TodoApp.class, args);
