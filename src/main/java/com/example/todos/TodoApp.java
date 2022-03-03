@@ -2,7 +2,6 @@ package com.example.todos;
 
 import com.example.todos.data.TodoRepository;
 import com.example.todos.model.Todo;
-import com.example.todos.model.TodoStatus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
