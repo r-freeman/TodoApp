@@ -37,7 +37,7 @@ public class TodoRepositoryIntegrationTests {
   }
 
   @Test
-  public void whenCalledSave_thenAssertThatDefaultStatusOfLastTodoIsInactive() {
+  public void whenCalledSave_thenAssertThatStatusOfLastTodoIsInactive() {
     todoRepository.save(new Todo("Go to the bank", TodoStatus.INACTIVE));
     List<Todo> todos = (List<Todo>) todoRepository.findAll();
 
@@ -46,7 +46,7 @@ public class TodoRepositoryIntegrationTests {
   }
 
   @Test
-  public void whenCalledSave_thenAssertThatDefaultStatusOfLastTodoIsCompleted() {
+  public void whenCalledSave_thenAssertThatStatusOfLastTodoIsCompleted() {
     todoRepository.save(new Todo("Do the shopping", TodoStatus.COMPLETED));
     List<Todo> todos = (List<Todo>) todoRepository.findAll();
 
