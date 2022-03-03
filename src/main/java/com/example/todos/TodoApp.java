@@ -23,11 +23,11 @@ public class TodoApp {
   public CommandLineRunner runner(TodoRepository todoRepository) {
     return args -> {
       LOG.info("Executing command line runner");
-      todoRepository.save(new Todo("Walk the dog", TodoStatus.ACTIVE));
-      todoRepository.save(new Todo("Do the shopping", TodoStatus.ACTIVE));
-      todoRepository.save(new Todo("Fix the washing machine", TodoStatus.ACTIVE));
-      todoRepository.save(new Todo("Feed the fish", TodoStatus.ACTIVE));
-      todoRepository.save(new Todo("Go to bank", TodoStatus.ACTIVE));
+      todoRepository.save(new Todo("Walk the dog"));
+      todoRepository.save(new Todo("Do the shopping"));
+      todoRepository.save(new Todo("Fix the washing machine"));
+      todoRepository.save(new Todo("Feed the fish"));
+      todoRepository.save(new Todo("Go to bank"));
 
       for (Todo todo : todoRepository.findAll()) {
         LOG.info(todo.toString());

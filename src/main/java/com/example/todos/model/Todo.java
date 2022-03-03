@@ -16,23 +16,18 @@ public class Todo {
   public Todo() {
   }
 
-  public Todo(String content, Enum<TodoStatus> status) {
+  public Todo(String content) {
     this.content = content;
-    this.status = status;
+    this.status = TodoStatus.ACTIVE;
   }
 
-  public Todo(long id, String content, Enum<TodoStatus> status) {
-    this.id = id;
+  public Todo(String content, Enum<TodoStatus> status) {
     this.content = content;
     this.status = status;
   }
 
   public long getId() {
     return id;
-  }
-
-  public void setId(long id) {
-    this.id = id;
   }
 
   public String getContent() {

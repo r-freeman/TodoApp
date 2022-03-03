@@ -15,7 +15,7 @@ import java.util.List;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
-public class TodoRepositoryIntegrationTest {
+public class TodoRepositoryIntegrationTests {
   @Autowired
   private TodoRepository todoRepository;
 
@@ -25,5 +25,14 @@ public class TodoRepositoryIntegrationTest {
     List<Todo> todos = (List<Todo>) todoRepository.findAll();
 
     assertThat(todos.size()).isEqualTo(1);
+  }
+
+  @Test
+  public void whenCalledSave_thenAssertThatDefaultStatusOfLastTodoIsActive() {
+    todoRepository.save(new Todo("Walk the dog"));
+    List<Todo> todos = (List<Todo>) todoRepository.findAll();
+
+    Todo lastTodo = todos.get(todos.size() - 1);
+    assertThat(lastTodo.getStatus()).isEqualTo("Active");
   }
 }
