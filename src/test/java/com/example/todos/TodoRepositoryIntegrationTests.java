@@ -53,4 +53,16 @@ public class TodoRepositoryIntegrationTests {
     Todo lastTodo = todos.get(todos.size() - 1);
     assertThat(lastTodo.getStatus()).isEqualTo("Completed");
   }
+
+  @Test
+  public void whenCalledSave_thenCheckThatStatusOfTodoHasChanged() {
+    Todo todo = todoRepository.save(new Todo("Fix the car"));
+    long todoId = todo.getId();
+    todo.setStatus(TodoStatus.COMPLETED);
+    todoRepository.save(todo);
+
+    Todo updatedTodo = todoRepository.findById(todoId).get();
+
+    assertThat(updatedTodo.getStatus()).isEqualTo("Completed");
+  }
 }
