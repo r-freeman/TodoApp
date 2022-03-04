@@ -32,7 +32,7 @@ public class TodoApp {
         LOG.info(todo.toString());
       }
 
-//      todoRepository.deleteAll();
+      todoRepository.deleteAll();
     };
   }
 }

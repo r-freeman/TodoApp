@@ -24,7 +24,7 @@ public class TodoRepositoryIntegrationTests {
     todoRepository.save(new Todo("Do the shopping", TodoStatus.ACTIVE));
     List<Todo> todos = (List<Todo>) todoRepository.findAll();
 
-    assertThat(todos.size()).isEqualTo(2);
+    assertThat(todos.size()).isEqualTo(1);
   }
 
   @Test
@@ -58,7 +58,7 @@ public class TodoRepositoryIntegrationTests {
   public void whenCalledSave_thenCheckThatStatusOfTodoHasChanged() {
     Todo todo = todoRepository.save(new Todo("Fix the car"));
     long todoId = todo.getId();
-    todo.setStatus(TodoStatus.INACTIVE);
+    todo.setStatus(TodoStatus.COMPLETED);
     todoRepository.save(todo);
 
     Todo updatedTodo = todoRepository.findById(todoId).get();
