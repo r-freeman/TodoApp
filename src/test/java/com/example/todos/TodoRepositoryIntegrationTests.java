@@ -18,10 +18,11 @@ class TodoRepositoryIntegrationTests {
 
   @Test
   void whenCalledSave_thenCorrectNumberOfTodos() {
+    todoRepository.deleteAll();
     todoRepository.save(new Todo("Do the shopping", TodoStatus.ACTIVE));
     List<Todo> todos = (List<Todo>) todoRepository.findAll();
 
-    assertThat(todos.size()).isEqualTo(2);
+    assertThat(todos.size()).isEqualTo(1);
   }
 
   @Test

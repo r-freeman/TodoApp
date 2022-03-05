@@ -31,8 +31,6 @@ public class TodoApp {
       for (Todo todo : todoRepository.findAll()) {
         LOG.info(todo.toString());
       }
-
-      todoRepository.deleteAll();
     };
   }
 }
