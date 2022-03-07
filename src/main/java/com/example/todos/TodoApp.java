@@ -2,12 +2,15 @@ package com.example.todos;
 
 import com.example.todos.data.TodoRepository;
 import com.example.todos.model.Todo;
+import com.example.todos.service.TodoService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+
+import java.util.List;
 
 @SpringBootApplication
 public class TodoApp {
@@ -19,7 +22,7 @@ public class TodoApp {
   }
 
   @Bean
-  public CommandLineRunner runner(TodoRepository todoRepository) {
+  public CommandLineRunner runner(TodoRepository todoRepository, TodoService todoService) {
     return args -> {
       LOG.info("Executing command line runner");
       todoRepository.save(new Todo("Walk the dog"));
@@ -29,6 +32,11 @@ public class TodoApp {
       todoRepository.save(new Todo("Go to bank"));
 
       for (Todo todo : todoRepository.findAll()) {
+        LOG.info(todo.toString());
+      }
+
+      List<Todo> todos = todoService.getAllTodos();
+      for (Todo todo : todos) {
         LOG.info(todo.toString());
       }
     };
