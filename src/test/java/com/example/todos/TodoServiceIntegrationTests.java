@@ -27,4 +27,11 @@ public class TodoServiceIntegrationTests {
     Optional<Todo> todo = todoService.getById(1);
     assertThat(todo).isPresent();
   }
+
+  @Test
+  public void whenCalled_findTodoByInvalidId() {
+    int id = -1;
+    Optional<Todo> todo = todoService.getById(id);
+    assertThat(todo).isEmpty();
+  }
 }

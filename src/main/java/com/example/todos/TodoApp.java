@@ -47,6 +47,12 @@ public class TodoApp {
         LOG.info("Found todo {}", id);
         LOG.info(todo.toString());
       }
+
+      id = -1;
+      todo = todoService.getById(id);
+      if (todo.isEmpty()) {
+        LOG.info("Todo {} not found.", id);
+      }
     };
   }
 }
