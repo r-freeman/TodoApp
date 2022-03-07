@@ -11,6 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import java.util.List;
+import java.util.Optional;
 
 @SpringBootApplication
 public class TodoApp {
@@ -37,6 +38,13 @@ public class TodoApp {
 
       List<Todo> todos = todoService.getAllTodos();
       for (Todo todo : todos) {
+        LOG.info(todo.toString());
+      }
+
+      int id = 5;
+      Optional<Todo> todo = todoService.getById(id);
+      if (todo.isPresent()) {
+        LOG.info("Found todo {}", id);
         LOG.info(todo.toString());
       }
     };

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
+import java.util.Optional;
 
 @SpringBootTest
 public class TodoServiceIntegrationTests {
@@ -19,5 +20,11 @@ public class TodoServiceIntegrationTests {
   public void whenCalled_checkNumberOfTodosInDatabaseIsPositive() {
     List<Todo> todos = todoService.getAllTodos();
     assertThat(todos.size()).isPositive();
+  }
+
+  @Test
+  public void whenCalled_findTodoByValidId() {
+    Optional<Todo> todo = todoService.getById(1);
+    assertThat(todo).isPresent();
   }
 }

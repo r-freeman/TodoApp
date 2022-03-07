@@ -5,6 +5,7 @@ import com.example.todos.model.Todo;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TodoService {
@@ -16,5 +17,9 @@ public class TodoService {
 
   public List<Todo> getAllTodos() {
     return this.todoRepository.findAll();
+  }
+
+  public Optional<Todo> getById(long id) {
+    return this.todoRepository.findById(id);
   }
 }
