@@ -24,7 +24,7 @@ public class TodoApp {
   }
 
   @Bean
-  public CommandLineRunner runner(TodoRepository todoRepository, TodoService todoService) {
+  public CommandLineRunner runner(TodoService todoService) {
     return args -> {
       LOG.info("Executing command line runner");
       todoService.addTodo(new Todo("Walk the dog"));
