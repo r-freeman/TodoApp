@@ -33,11 +33,11 @@ public class TodoApp {
       todoService.addTodo(new Todo("Feed the fish"));
       todoService.addTodo(new Todo("Go to bank"));
 
-      for (Todo todo : todoService.getAllTodos()) {
+      for (Todo todo : todoService.getTodos()) {
         LOG.info(todo.toString());
       }
 
-      List<Todo> todos = todoService.getAllTodos();
+      List<Todo> todos = todoService.getTodos();
       for (Todo todo : todos) {
         LOG.info(todo.toString());
       }
@@ -55,10 +55,10 @@ public class TodoApp {
         LOG.info("Todo {} not found.", id);
       }
 
-      int todoCount = todoService.getAllTodos().size();
+      int todoCount = todoService.getTodos().size();
       LOG.info("Current number of todos: {}", todoCount);
       todoService.addTodo(new Todo("Learn Spring"));
-      todoCount = todoService.getAllTodos().size();
+      todoCount = todoService.getTodos().size();
       LOG.info("New number of todos: {}", todoCount);
 
       List<Todo> activeTodos = todoService.getTodosByStatus(TodoStatus.ACTIVE);

@@ -19,7 +19,7 @@ public class TodoServiceIntegrationTests {
 
   @Test
   public void whenCalled_checkNumberOfTodosInDatabaseIsPositive() {
-    List<Todo> todos = todoService.getAllTodos();
+    List<Todo> todos = todoService.getTodos();
     assertThat(todos.size()).isPositive();
   }
 
@@ -38,17 +38,17 @@ public class TodoServiceIntegrationTests {
 
   @Test
   public void whenCalledSave_checkThatNewTodoExists() {
-    int todoCount = todoService.getAllTodos().size();
+    int todoCount = todoService.getTodos().size();
     todoService.addTodo(new Todo("This is a new todo"));
-    assertThat(todoService.getAllTodos().size()).isEqualTo(todoCount + 1);
+    assertThat(todoService.getTodos().size()).isEqualTo(todoCount + 1);
   }
 
   @Test
   public void whenCalledDelete_checkTodoCountIsCorrect() {
-    List<Todo> todos = todoService.getAllTodos();
+    List<Todo> todos = todoService.getTodos();
     Todo todo = todos.get(todos.size() - 1);
     todoService.deleteTodo(todo.getId());
-    assertThat(todoService.getAllTodos().size()).isEqualTo(todos.size() - 1);
+    assertThat(todoService.getTodos().size()).isEqualTo(todos.size() - 1);
   }
 
   @Test
