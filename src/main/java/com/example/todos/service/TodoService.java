@@ -2,6 +2,7 @@ package com.example.todos.service;
 
 import com.example.todos.data.TodoRepository;
 import com.example.todos.model.Todo;
+import com.example.todos.model.TodoStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,6 +22,10 @@ public class TodoService {
 
   public Optional<Todo> getById(long id) {
     return this.todoRepository.findById(id);
+  }
+
+  public List<Todo> getTodosByStatus(TodoStatus status) {
+    return (List<Todo>) this.todoRepository.findTodosByStatus(status);
   }
 
   public void addTodo(Todo todo) {

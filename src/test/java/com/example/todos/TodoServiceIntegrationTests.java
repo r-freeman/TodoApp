@@ -3,6 +3,7 @@ package com.example.todos;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.example.todos.model.Todo;
+import com.example.todos.model.TodoStatus;
 import com.example.todos.service.TodoService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,5 +49,11 @@ public class TodoServiceIntegrationTests {
     Todo todo = todos.get(todos.size() - 1);
     todoService.deleteTodo(todo.getId());
     assertThat(todoService.getAllTodos().size()).isEqualTo(todos.size() - 1);
+  }
+
+  @Test
+  public void whenCalled_checkNumberOfActiveTodosIsPositive() {
+    List<Todo> todos = todoService.getTodosByStatus(TodoStatus.ACTIVE);
+    assertThat(todos.size()).isPositive();
   }
 }

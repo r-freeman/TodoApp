@@ -2,6 +2,7 @@ package com.example.todos;
 
 import com.example.todos.data.TodoRepository;
 import com.example.todos.model.Todo;
+import com.example.todos.model.TodoStatus;
 import com.example.todos.service.TodoService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -59,6 +60,12 @@ public class TodoApp {
       todoService.addTodo(new Todo("Learn Spring"));
       todoCount = todoService.getAllTodos().size();
       LOG.info("New number of todos: {}", todoCount);
+
+      List<Todo> activeTodos = todoService.getTodosByStatus(TodoStatus.ACTIVE);
+      LOG.info("Active todos:");
+      for (Todo activeTodo : activeTodos) {
+        LOG.info(activeTodo.toString());
+      }
     };
   }
 }
