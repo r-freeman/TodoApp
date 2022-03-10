@@ -26,13 +26,13 @@ public class TodoApp {
   public CommandLineRunner runner(TodoRepository todoRepository, TodoService todoService) {
     return args -> {
       LOG.info("Executing command line runner");
-      todoRepository.save(new Todo("Walk the dog"));
-      todoRepository.save(new Todo("Do the shopping"));
-      todoRepository.save(new Todo("Fix the washing machine"));
-      todoRepository.save(new Todo("Feed the fish"));
-      todoRepository.save(new Todo("Go to bank"));
+      todoService.addTodo(new Todo("Walk the dog"));
+      todoService.addTodo(new Todo("Do the shopping"));
+      todoService.addTodo(new Todo("Fix the washing machine"));
+      todoService.addTodo(new Todo("Feed the fish"));
+      todoService.addTodo(new Todo("Go to bank"));
 
-      for (Todo todo : todoRepository.findAll()) {
+      for (Todo todo : todoService.getAllTodos()) {
         LOG.info(todo.toString());
       }
 
@@ -53,6 +53,12 @@ public class TodoApp {
       if (todo.isEmpty()) {
         LOG.info("Todo {} not found.", id);
       }
+
+      int todoCount = todoService.getAllTodos().size();
+      LOG.info("Current number of todos: {}", todoCount);
+      todoService.addTodo(new Todo("Learn Spring"));
+      todoCount = todoService.getAllTodos().size();
+      LOG.info("New number of todos: {}", todoCount);
     };
   }
 }

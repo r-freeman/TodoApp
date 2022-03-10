@@ -22,4 +22,8 @@ public class TodoService {
   public Optional<Todo> getById(long id) {
     return this.todoRepository.findById(id);
   }
+
+  public void addTodo(Todo todo) {
+    this.todoRepository.save(todo);
+  }
 }

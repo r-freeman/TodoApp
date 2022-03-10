@@ -34,4 +34,11 @@ public class TodoServiceIntegrationTests {
     Optional<Todo> todo = todoService.getById(id);
     assertThat(todo).isEmpty();
   }
+
+  @Test
+  public void whenCalledSave_checkThatNewTodoExists() {
+    int todoCount = todoService.getAllTodos().size();
+    todoService.addTodo(new Todo("This is a new todo"));
+    assertThat(todoService.getAllTodos().size()).isEqualTo(todoCount + 1);
+  }
 }
