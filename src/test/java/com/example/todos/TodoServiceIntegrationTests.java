@@ -41,4 +41,12 @@ public class TodoServiceIntegrationTests {
     todoService.addTodo(new Todo("This is a new todo"));
     assertThat(todoService.getAllTodos().size()).isEqualTo(todoCount + 1);
   }
+
+  @Test
+  public void whenCalledDelete_checkTodoCountIsCorrect() {
+    List<Todo> todos = todoService.getAllTodos();
+    Todo todo = todos.get(todos.size() - 1);
+    todoService.deleteTodo(todo.getId());
+    assertThat(todoService.getAllTodos().size()).isEqualTo(todos.size() - 1);
+  }
 }

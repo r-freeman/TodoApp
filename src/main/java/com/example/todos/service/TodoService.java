@@ -26,4 +26,11 @@ public class TodoService {
   public void addTodo(Todo todo) {
     this.todoRepository.save(todo);
   }
+
+  public void deleteTodo(long id) {
+    Optional<Todo> todo = this.todoRepository.findById(id);
+    if (todo.isPresent()) {
+      this.todoRepository.deleteById(id);
+    }
+  }
 }
