@@ -1,6 +1,5 @@
 package com.example.todos;
 
-import com.example.todos.data.TodoRepository;
 import com.example.todos.model.Todo;
 import com.example.todos.model.TodoStatus;
 import com.example.todos.service.TodoService;
