@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>TodosApp | Todos</title>
+</head>
+<body>
+
+<h1>Todos</h1>
+
+<table>
+    <tr>
+        <td>Id</td>
+        <td>Content</td>
+        <td>Content</td>
+    </tr>
+    <tr th:each="todo:${todos}">
+        <td th:text="${todo.id}">Id</td>
+        <td th:text="${todo.content}">Content</td>
+        <td th:text="${todo.status}">Status</td>
+    </tr>
+</table>
+
+</body>
+</html>
